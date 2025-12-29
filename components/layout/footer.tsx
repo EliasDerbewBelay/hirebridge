@@ -1,59 +1,44 @@
 export default function Footer() {
   return (
-    <footer className="border-t bg-background">
-      <div className="mx-auto max-w-7xl px-6 py-12">
-        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
-          {/* Brand */}
+    <footer className="border-t bg-background/80 py-12 backdrop-blur-sm">
+      <div className="container mx-auto px-6">
+        <div className="grid gap-8 md:grid-cols-4">
           <div>
-            <h3 className="text-lg font-semibold">HireBridge</h3>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Bridging talent with opportunity. HireBridge connects job seekers
-              with companies through a modern, secure, and easy-to-use hiring
-              platform.
+            <div className="mb-4 text-2xl font-bold">HireBridge</div>
+            <p className="text-muted-foreground">
+              Bridging talent with opportunity through innovative hiring
+              solutions.
             </p>
           </div>
-
-          {/* Platform */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wide">
-              Platform
-            </h4>
-            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+            <h4 className="mb-4 font-semibold">For Candidates</h4>
+            <ul className="space-y-2 text-muted-foreground">
               <li>Find Jobs</li>
-              <li>Post a Job</li>
-              <li>Companies</li>
-              <li>Applicants</li>
+              <li>Career Advice</li>
+              <li>Resume Builder</li>
+              <li>Skill Assessment</li>
             </ul>
           </div>
-
-          {/* Company */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wide">
-              Company
-            </h4>
-            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+            <h4 className="mb-4 font-semibold">For Companies</h4>
+            <ul className="space-y-2 text-muted-foreground">
+              <li>Post Jobs</li>
+              <li>Talent Search</li>
+              <li>Analytics</li>
+              <li>Enterprise Solutions</li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="mb-4 font-semibold">Company</h4>
+            <ul className="space-y-2 text-muted-foreground">
               <li>About Us</li>
-              <li>How It Works</li>
+              <li>Careers</li>
+              <li>Blog</li>
               <li>Contact</li>
-              <li>Support</li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wide">
-              Legal
-            </h4>
-            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              <li>Terms of Service</li>
-              <li>Privacy Policy</li>
-              <li>Cookie Policy</li>
             </ul>
           </div>
         </div>
-
-        {/* Bottom */}
-        <div className="mt-10 border-t pt-6 text-center text-sm text-muted-foreground">
+        <div className="mt-12 border-t pt-8 text-center text-sm text-muted-foreground">
           © {new Date().getFullYear()} HireBridge. All rights reserved.
         </div>
       </div>

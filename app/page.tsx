@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
+
   Users,
   Building2,
   TrendingUp,
@@ -280,6 +281,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+
     </div>
   );
 }
