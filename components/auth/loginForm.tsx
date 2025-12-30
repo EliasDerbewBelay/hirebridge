@@ -12,9 +12,11 @@ export default function LoginForm() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
     const { data: authData, error: authError } =
       await supabase.auth.signInWithPassword({
@@ -23,18 +25,21 @@ export default function LoginForm() {
       });
 
     if (authError || !authData?.user) {
-      console.error(authError?.message ?? "Login failed");
+      setLoading(false);
+      alert(authError?.message ?? "Login failed");
       return;
     }
 
     const { data: profile, error: profileError } = await supabase
-      .from("user_profiles") // make sure this table exists
+      .from("user_profiles")
       .select("role")
       .eq("id", authData.user.id)
-      .single();
+      .maybeSingle();
 
-    if (profileError) {
-      console.error(profileError.message);
+    setLoading(false);
+
+    if (profileError || !profile) {
+      console.error(profileError?.message ?? "Profile not found");
       return;
     }
 
@@ -48,23 +53,26 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="border shadow-lg max-w-md mx-auto p-4 rounded-lg m-9">
-      <h1 className="font-bold text-4xl">Login</h1>
-      <form onSubmit={handleLogin}>
+    <div className="max-w-md mx-auto p-6 rounded-lg shadow border">
+      <h1 className="text-3xl font-bold mb-4">Login</h1>
+
+      <form onSubmit={handleLogin} className="flex flex-col gap-4">
         <Input
           type="email"
-          placeholder="your email address"
+          placeholder="Email address"
           required
           onChange={(e) => setEmail(e.target.value)}
         />
+
         <Input
           type="password"
-          placeholder="password"
+          placeholder="Password"
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button type="submit" className="mt-4 w-full">
-          Login
+
+        <Button type="submit" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
         </Button>
       </form>
     </div>
